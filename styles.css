@@ -13,11 +13,11 @@ body {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  background: #bb71f3;
-  background: -moz-linear-gradient(-45deg, #bb71f3 0%, #3d4d91 100%);
-  background: -webkit-linear-gradient(-45deg, #bb71f3 0%, #3d4d91 100%);
-  background: linear-gradient(135deg, #bb71f3 0%, #3d4d91 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bb71f3', endColorstr='#3d4d91', GradientType=1);
+  background: #5b6e91;
+  background: -moz-linear-gradient(-45deg, #5b6e91 0%, #4367a9 100%);
+  background: -webkit-linear-gradient(-45deg, #5b6e91 0%, #4367a9 100%);
+  background: linear-gradient(135deg, #5b6e91 0%, #4367a9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5b6e91', endColorstr='#4367a9', GradientType=1);
   font-family: "Helvetica Neue", "Futura", "Trebuchet MS", Arial;
   -webkit-user-select: none;
   user-select: none;
