@@ -215,15 +215,20 @@ Player.prototype = {
    */
   step: function() {
     var self = this;
-
+  
     // Get the Howl we want to manipulate.
     var sound = self.playlist[self.index].howl;
-
+  
     // Determine our current seek position.
     var seek = sound.seek() || 0;
     timer.innerHTML = self.formatTime(Math.round(seek));
     progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
-
+  
+    // Update the download button.
+    var downloadBtn = document.getElementById('downloadBtn');
+    downloadBtn.href = sound._src; // Use the source as the download URL.
+    downloadBtn.download = sound._src.split('/').pop(); // Use the file name as the download name.
+  
     // If the sound is still playing, continue stepping.
     if (sound.playing()) {
       requestAnimationFrame(self.step.bind(self));
