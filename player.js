@@ -23,20 +23,31 @@ var Player = function(playlist) {
   this.playlist = playlist;
   this.index = 0;
 
-  // Display the title of the first track.
-  track.innerHTML = '1. ' + playlist[0].title;
+  track.innerHTML = playlist[0].title;
 
-  // Setup the playlist display.
   playlist.forEach(function(song) {
     var div = document.createElement('div');
     div.className = 'list-song';
     div.innerHTML = song.title;
+
+    // Create a download button for each song
+    var downloadBtn = document.createElement('a');
+    downloadBtn.href = './audio/' + song.file + '.mp3';
+    downloadBtn.innerHTML = 'Download';
+    downloadBtn.className = 'download-btn';
+    downloadBtn.download = song.title;
+    div.appendChild(downloadBtn);
+
     div.onclick = function() {
       player.skipTo(playlist.indexOf(song));
     };
     list.appendChild(div);
   });
-};
+
+  // Assuming your ZIP file is named 'playlist.zip' and located in the 'audio' folder
+  document.getElementById('downloadAllBtn').href = './audio/playlist.zip';
+  document.getElementById('downloadAllBtn').download = 'playlist.zip';
+};  
 Player.prototype = {
   /**
    * Play a song in the playlist.
@@ -223,11 +234,6 @@ Player.prototype = {
     var seek = sound.seek() || 0;
     timer.innerHTML = self.formatTime(Math.round(seek));
     progress.style.width = (((seek / sound.duration()) * 100) || 0) + '%';
-  
-    // Update the download button.
-    var downloadBtn = document.getElementById('downloadBtn');
-    downloadBtn.href = sound._src; // Use the source as the download URL.
-    downloadBtn.download = sound._src.split('/').pop(); // Use the file name as the download name.
   
     // If the sound is still playing, continue stepping.
     if (sound.playing()) {
