@@ -8,6 +8,11 @@
  *  MIT License
  */
 
+// Utility function to get file extension
+function getFileExtension(filename) {
+  return filename.slice(((filename.lastIndexOf(".") - 1) >>> 0) + 2);
+}
+
 // Cache references to DOM elements.
 var elms = ['track', 'timer', 'duration', 'playBtn', 'pauseBtn', 'prevBtn', 'nextBtn', 'playlistBtn', 'volumeBtn', 'progress', 'bar', 'wave', 'loading', 'playlist', 'list', 'volume', 'barEmpty', 'barFull', 'sliderBtn'];
 elms.forEach(function(elm) {
@@ -38,7 +43,7 @@ var Player = function(playlist) {
     downloadBtn.href = './audio/' + song.downloadFile; // Use downloadFile for the href
     downloadBtn.innerHTML = 'Download';
     downloadBtn.className = 'download-btn';
-    downloadBtn.download = song.downloadFile; // Use downloadFile for the download attribute
+    downloadBtn.download = song.title + '.' + getFileExtension(song.downloadFile); // Include a period before the file extension
     div.appendChild(downloadBtn);
   
     div.onclick = function() {
