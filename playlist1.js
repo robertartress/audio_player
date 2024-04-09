@@ -1,8 +1,8 @@
 var playlist1 = [
     {
       title: 'Someone Elses Ex',
-      streamFile: 'song.flac',
-      downloadFile: 'song.mp3',
+      streamFile: 'audio/song.flac',
+      downloadFile: 'audio/song.mp3',
       howl: null
     },
   ];
