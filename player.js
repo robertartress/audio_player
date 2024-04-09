@@ -37,13 +37,13 @@ var Player = function(playlist) {
     var title = document.createElement('span');
     title.innerHTML = song.title;
     div.appendChild(title);
-  
+
     // Create a download button for each song
     var downloadBtn = document.createElement('a');
     downloadBtn.href = './audio/' + song.downloadFile; // Use downloadFile for the href
     downloadBtn.innerHTML = 'Download';
     downloadBtn.className = 'download-btn';
-    downloadBtn.download = song.title + '.' + getFileExtension(song.downloadFile); // Include a period before the file extension
+    downloadBtn.download = song.title + getFileExtension(song.downloadFile); // Set the download attribute with correct file name and extension
     div.appendChild(downloadBtn);
   
     div.onclick = function() {
