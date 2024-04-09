@@ -24,7 +24,8 @@ var Player = function(playlist) {
   this.index = 0;
 
   // Display the title of the first track.
-  track.innerHTML = '1. ' + playlist[0].title;
+  //track.innerHTML = '1. ' + playlist[0].title;// old, removed the 1. etc
+  track.innerHTML = playlist[0].title;
 
   // Setup the playlist display.
   playlist.forEach(function(song) {
