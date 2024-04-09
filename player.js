@@ -28,16 +28,19 @@ var Player = function(playlist) {
   playlist.forEach(function(song) {
     var div = document.createElement('div');
     div.className = 'list-song';
-    div.innerHTML = song.title;
-
+  
+    var title = document.createElement('span');
+    title.innerHTML = song.title;
+    div.appendChild(title);
+  
     // Create a download button for each song
     var downloadBtn = document.createElement('a');
-    downloadBtn.href = './audio/' + song.file + '.mp3';
+    downloadBtn.href = './audio/' + song.downloadFile; // Use downloadFile for the href
     downloadBtn.innerHTML = 'Download';
     downloadBtn.className = 'download-btn';
-    downloadBtn.download = song.title;
+    downloadBtn.download = song.downloadFile; // Use downloadFile for the download attribute
     div.appendChild(downloadBtn);
-
+  
     div.onclick = function() {
       player.skipTo(playlist.indexOf(song));
     };
@@ -66,7 +69,7 @@ Player.prototype = {
       sound = data.howl;
     } else {
       sound = data.howl = new Howl({
-        src: ['./audio/' + data.file + '.mp3'],
+        src: ['./audio/' + data.streamFile], // Use streamFile for the source
         html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
         onplay: function() {
           // Display the duration.
@@ -280,14 +283,20 @@ Player.prototype = {
   }
 };
 
-// Setup our new audio player class and pass it the playlist.
+// Setup our new audio player class and pass it the playlist from an external file.
+var player = new Player(playlist1);
+
+/* Commented out the previous hardcoded playlist setup. Keep this for reference.
 var player = new Player([
   {
     title: 'S.E.X.',
-    file: 'S.E.X. [Mix] (4.5.24)',
+    streamFile: 'S.E.X. [Mix] (4.5.24).flac', // File used for streaming
+    downloadFile: 'S.E.X. [Mix] (4.5.24).mp3' // File available for downloading
     howl: null
   }
+  // Add more songs here if necessary
 ]);
+*/
 
 // Bind our player controls.
 playBtn.addEventListener('click', function() {
