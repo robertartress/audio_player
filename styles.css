@@ -128,15 +128,16 @@ body {
 }
 #downloadBtn {
   position: absolute;
-  top: 50%; /* Align vertically with the other buttons */
-  right: calc(3% + 35px + 10px); /* 3% (volume button offset) + 35px (volume button width) + 10px (additional spacing) */
-  margin-top: -17.5px; /* Half the height of the button to center it vertically */
+  top: 50%; /* Center vertically */
+  right: calc(3% + 35px); /* right offset of volume button + width of volume button */
+  margin-top: -17.5px; /* half the height of the button to center it vertically */
   width: 35px;
   height: 35px;
-  /* background-image: url('DOWNLOAD_BUTTON_IMAGE_URL'); /* Replace with your desired icon */
-  background-size: contain; /* Ensure the icon fits the button */
-  background-repeat: no-repeat;
-  background-position: center;
+  color: white; /* Set color for text-based icons */
+  font-size: 35px; /* Appropriate size for Material Icons */
+  background: none; /* No background for text-based icons */
+  text-align: center;
+  line-height: 35px; /* Center the text/icon vertically */
 }
 
 #volumeBtn {
